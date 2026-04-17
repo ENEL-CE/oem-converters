@@ -1,0 +1,220 @@
+.locus-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.header {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.title-icon {
+    color: var(--accent);
+    strokeWidth: 3;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.glitch {
+    position: relative;
+    display: inline-block;
+    color: var(--accent);
+}
+
+.drop-zone {
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 0;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drop-zone:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 69, 0, 0.1);
+}
+
+.drop-zone.dragover {
+    border-color: var(--accent);
+    background: rgba(255, 69, 0, 0.05);
+}
+
+.upload-icon {
+    color: var(--border-color);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.drop-zone:hover .upload-icon {
+    color: var(--accent);
+}
+
+#drop-text {
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
+
+#csv_file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Options Panel */
+.options-panel {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.checkbox-label input {
+    display: none;
+}
+
+.chk-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    background: transparent;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox-label:hover .chk-box {
+    border-color: var(--border-hover);
+}
+
+.checkbox-label input:checked + .chk-box {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 4px var(--bg-main);
+}
+
+/* Progress Area */
+.progress-container {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--border-color);
+    width: 100%;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+#progress-text {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--accent);
+}
+
+/* Buttons Container */
+#action-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+    padding: 1rem;
+    font-family: var(--font-family);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.primary-btn {
+    background: var(--text-primary);
+    color: var(--bg-main);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.primary-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+    color: #fff;
+    border-color: #fff;
+}
