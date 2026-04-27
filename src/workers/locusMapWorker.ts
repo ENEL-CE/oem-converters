@@ -6,7 +6,6 @@ interface WorkerResult {
     desc: string;
     utm_e: string;
     utm_n: string;
-    pOrder: number;
 }
 
 self.onmessage = async function (e: MessageEvent) {
@@ -73,12 +72,8 @@ self.onmessage = async function (e: MessageEvent) {
                 const utm_e = ccParts[1];
                 const utm_n = ccParts[2];
 
-                // Parse order from name
-                const pMatch = name.match(/^P0*(\d+)/i);
-                const pOrder = pMatch ? parseInt(pMatch[1], 10) : Infinity;
-
                 dataArr.push({
-                    name, lat, lon, time, desc, utm_e, utm_n, pOrder
+                    name, lat, lon, time, desc, utm_e, utm_n
                 });
             }
         }
@@ -93,17 +88,7 @@ self.onmessage = async function (e: MessageEvent) {
 
     self.postMessage({ type: 'progress', progress: 50 });
 
-    // Step 2: Sort
-    dataArr.sort((a, b) => {
-        if (a.pOrder !== Infinity || b.pOrder !== Infinity) {
-            return a.pOrder - b.pOrder;
-        }
-        return new Date(a.time).getTime() - new Date(b.time).getTime();
-    });
-
-    self.postMessage({ type: 'progress', progress: 70 });
-
-    // Step 3: Generate .scr
+    // Step 2: Generate .scr
     const scrParts: string[] = [];
     scrParts.push("_Osmode 0\n_PDMODE\n65\n_PDSIZE\n3\n");
 
